@@ -12,7 +12,7 @@ local Resources = {}
 local resources_path = BaconBox.ResourcePathHandler_getResourcePath()
 
 function Resources.xml(name)
-	BaconBox.ResourceManager_loadFlashExporterXML(resources_path  .. "/" .. name .. ".xml")
+	return BaconBox.ResourceManager_loadFlashExporterXML(resources_path  .. "/" .. name .. ".xml")
 end
 
 -- Loads a file as a texture. When given no key, guesses the key from the filename.
@@ -23,11 +23,11 @@ function Resources.texture(file, key)
 	if not key then
 		key = file:gsub("%.%w+$", "")
 	end
-	BaconBox.ResourceManager_loadTexture(key, resources_path .. "/" .. file)
+	return BaconBox.ResourceManager_loadTexture(key, resources_path .. "/" .. file)
 end
 
 function Resources.font(name, file, ...)
-	BaconBox.ResourceManager_loadFont(name, resources_path .. "/" .. file, ...)
+	return BaconBox.ResourceManager_loadFont(name, resources_path .. "/" .. file, ...)
 end
 
 -- Loads a file as a sound. When given no key, guesses the key from the filename.
@@ -38,7 +38,7 @@ function Resources.sound(file, key)
 	if not key then
 		key = file:gsub("%.%w+$", "")
 	end
-	BaconBox.ResourceManager_loadSoundRelativePath(key, file);
+	return BaconBox.ResourceManager_loadSoundRelativePath(key, file);
 end
 
 return Resources
